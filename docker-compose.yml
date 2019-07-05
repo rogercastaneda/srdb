@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  
+  sr_db:
+    image: mariadb
+    container_name: sr_db
+    ports: 
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=sr_db
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - srdb-network
+
+networks:
+  srdb-network:
+    driver: bridge
